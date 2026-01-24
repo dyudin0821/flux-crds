@@ -5,6 +5,6 @@ metadata:
   namespace: envoy-gateway-system
 spec:
   interval: 120m
-  url: oci://mirror.ghcr.io/envoyproxy/gateway-crds-helm
+  url: oci://docker.io/envoyproxy/gateway-helm
   ref:
     tag: 1.6.0
