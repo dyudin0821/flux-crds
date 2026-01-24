@@ -2,6 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
   name: envoy-gateway-crds
+  namespace: envoy-gateway-system
 spec:
   interval: 120m
   url: oci://mirror.ghcr.io/envoyproxy/gateway-crds-helm
