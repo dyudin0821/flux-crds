@@ -1,0 +1,26 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: envoy-gateway
+spec:
+  interval: 24h
+  url: https://github.com/envoyproxy/gateway.git
+  ref:
+    tag: v1.6.2
+  ignore: |
+    # exclude all
+    /*
+    # include charts/gateway-helm/crds
+    !/charts/gateway-helm/crds
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: envoy-gateway-crds
+spec:
+  interval: 24h
+  path: ./charts/gateway-helm/crds
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: envoy-gateway
